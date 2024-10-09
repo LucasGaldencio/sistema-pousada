@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :conta_usuarios
   resources :quartos
   resources :reservas

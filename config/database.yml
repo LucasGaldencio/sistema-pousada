@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
+  username: usuario_pousada
+  password: pousada123
   host: localhost
 
 development:
@@ -43,7 +43,7 @@ test:
 # URL environment variable explicitly:
 #
 #   production:
-#     url: <%= ENV["MY_APP_DATABASE_URL"] %>
+#     url: <%= ENV["SISTEMA_POUSADA_DATABASE_URL"] %>
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
@@ -51,5 +51,3 @@ test:
 production:
   <<: *default
   database: sistema_pousada_production
-  username: sistema_pousada
-  password: <%= ENV["SISTEMA_POUSADA_DATABASE_PASSWORD"] %>

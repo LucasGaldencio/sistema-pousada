@@ -3,8 +3,13 @@
 <%= render @conta_usuario %>
 
 <div>
-  <%= link_to "Edit this conta usuario", edit_conta_usuario_path(@conta_usuario) %> |
-  <%= link_to "Back to conta usuarios", conta_usuarios_path %>
+  <%= link_to "Editar esta conta usuario", edit_conta_usuario_path(@conta_usuario) %> |
+  <%= link_to "Voltar para lista de conta usuarios", conta_usuarios_path %>
 
-  <%= button_to "Destroy this conta usuario", @conta_usuario, method: :delete %>
+  <%= button_to "Excluir esta conta usuario", @conta_usuario, method: :delete %>
+</div>
+
+<!-- Botão para voltar para a Home -->
+<div class="actions">
+  <%= link_to "Voltar para Home", home_index_path, class: "btn btn-primary" %>
 </div>

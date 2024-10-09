@@ -5,6 +5,11 @@
 <br>
 
 <div>
-  <%= link_to "Show this reserva", @reserva %> |
-  <%= link_to "Back to reservas", reservas_path %>
+  <%= link_to "Mostrar esta reserva", @reserva %> |
+  <%= link_to "Voltar para lista de reservas", reservas_path %>
+</div>
+
+<!-- Botão para voltar para a Home -->
+<div class="actions">
+  <%= link_to "Voltar para Home", home_index_path, class: "btn btn-primary" %>
 </div>

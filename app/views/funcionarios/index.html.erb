@@ -6,9 +6,14 @@
   <% @funcionarios.each do |funcionario| %>
     <%= render funcionario %>
     <p>
-      <%= link_to "Show this funcionario", funcionario %>
+      <%= link_to "Mostrar detalhes do funcionario", funcionario %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New funcionario", new_funcionario_path %>
+<%= link_to "Novo funcionario", new_funcionario_path %>
+
+<!-- Botão para voltar para a Home -->
+<div class="actions">
+  <%= link_to "Voltar para Home", home_index_path, class: "btn btn-primary" %>
+</div>

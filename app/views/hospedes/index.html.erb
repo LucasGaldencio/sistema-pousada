@@ -4,11 +4,24 @@
 
 <div id="hospedes">
   <% @hospedes.each do |hospede| %>
-    <%= render hospede %>
-    <p>
-      <%= link_to "Mostrar detalhes do hóspede", hospede %>
-    </p>
+    <div class="hospede-item">
+      <p><strong>Nome:</strong> <%= hospede.nome %></p>
+      <p><strong>Email:</strong> <%= hospede.email %></p>
+      <p><strong>Telefone:</strong> <%= hospede.telefone %></p>
+
+      <%= link_to "Mostrar detalhes do hóspede", hospede, class: "btn btn-info" %>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "Novo hóspede", new_hospede_path %>
+<div class="actions">
+  <%= link_to "Novo hóspede", new_hospede_path, class: "btn btn-success" %>
+</div>
+
+<br>
+<br>
+
+<!-- Botão para voltar para a Home -->
+<div class="actions">
+  <%= link_to "Voltar para Home", home_index_path, class: "btn btn-primary" %>
+</div>

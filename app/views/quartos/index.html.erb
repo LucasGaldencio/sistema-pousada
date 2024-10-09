@@ -6,9 +6,14 @@
   <% @quartos.each do |quarto| %>
     <%= render quarto %>
     <p>
-      <%= link_to "Show this quarto", quarto %>
+      <%= link_to "Mostrar detalhes do quarto", quarto %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New quarto", new_quarto_path %>
+<%= link_to "Novo quarto", new_quarto_path %>
+
+<!-- Botão para voltar para a Home -->
+<div class="actions">
+  <%= link_to "Voltar para Home", home_index_path, class: "btn btn-primary" %>
+</div>

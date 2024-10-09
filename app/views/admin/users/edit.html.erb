@@ -1,0 +1,29 @@
+<h1>Editar Usuário</h1>
+
+<%= form_for([:admin, @user]) do |f| %>
+  <div class="field">
+    <%= f.label :email, "Email" %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "Senha (deixe em branco se não for alterar)" %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmação de Senha (deixe em branco se não for alterar)" %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role, "Tipo de Usuário" %><br />
+    <%= f.select :role, User.roles.keys.map { |role| [role.humanize, role] } %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Atualizar Usuário" %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', admin_users_path %>

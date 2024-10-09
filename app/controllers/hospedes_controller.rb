@@ -1,4 +1,11 @@
 class HospedesController < ApplicationController
+  # Garante que o usuário está logado
+  before_action :authenticate_user!
+
+  # Garante que apenas administradores podem criar, editar e remover hóspedes
+  before_action :authorize_admin, only: [:create, :update, :destroy]
+
+  # Carrega o hóspede para as ações que precisam desse recurso
   before_action :set_hospede, only: %i[ show edit update destroy ]
 
   # GET /hospedes
@@ -49,14 +56,21 @@ class HospedesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  # Garante que apenas administradores podem realizar certas ações
+  def authorize_admin
+    unless current_user.admin?
+      redirect_to root_path, alert: "Acesso negado! Somente administradores podem fazer isso."
+    end
+  end
+
+  # Carrega o hóspede com base no ID fornecido
   def set_hospede
     @hospede = Hospede.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to hospedes_path, alert: "Hóspede não encontrado."
   end
 
-  # Only allow a list of trusted parameters through.
+  # Define os parâmetros permitidos para um hóspede
   def hospede_params
     params.require(:hospede).permit(:nome, :cpf, :data_nascimento, :telefone, :email)
   end

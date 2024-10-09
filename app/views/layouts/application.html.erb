@@ -18,11 +18,11 @@
         Logado como <%= current_user.email %>
       </p>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete %> |
-      <%= link_to 'Editar Conta', edit_user_registration_path %>
+      <%#= link_to 'Editar Conta', edit_user_registration_path %>
     <% else %>
       <!-- Exibir quando o usuário não estiver logado -->
       <%= link_to 'Login', new_user_session_path %> |
-      <%= link_to 'Registrar', new_user_registration_path %>
+      <%#= link_to 'Registrar', new_user_registration_path %>
     <% end %>
   </nav>
 </header>

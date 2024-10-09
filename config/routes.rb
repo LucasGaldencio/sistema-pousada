@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  # Página Home para usuários autenticados
+  authenticated :user do
+    root to: 'home#index', as: :authenticated_root
+  end
+
+  # Página de login para não autenticados
+  devise_scope :user do
+    root to: "devise/sessions#new", as: :unauthenticated_root
+  end
+
   # Configurações do Devise, desabilitando o registro público
   devise_for :users, skip: [:registrations]
-
-  # Rota principal direcionando para a página de login do Devise
-  devise_scope :user do
-    root to: "devise/sessions#new"  # Define a página de login como a página inicial
-  end
 
   # Rotas para o gerenciamento de usuários para administradores
   namespace :admin do
@@ -18,4 +23,7 @@ Rails.application.routes.draw do
   resources :reservas
   resources :funcionarios
   resources :hospedes
+
+  # Rota para a página Home
+  get 'home/index'
 end

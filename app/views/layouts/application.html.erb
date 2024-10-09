@@ -7,6 +7,9 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload" %> <!-- Linha para carregar o JavaScript -->
+  <%= javascript_include_tag "rails-ujs", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
 </head>
 
 <body>
@@ -17,7 +20,7 @@
       <p>
         Logado como <%= current_user.email %>
       </p>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %> |
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { turbo: false } %> |
       <%#= link_to 'Editar Conta', edit_user_registration_path %>
     <% else %>
       <!-- Exibir quando o usuário não estiver logado -->

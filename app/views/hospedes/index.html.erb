@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Hospedes</h1>
+<h1>Hóspedes</h1>
 
 <div id="hospedes">
   <% @hospedes.each do |hospede| %>
     <%= render hospede %>
     <p>
-      <%= link_to "Show this hospede", hospede %>
+      <%= link_to "Mostrar detalhes do hóspede", hospede %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New hospede", new_hospede_path %>
+<%= link_to "Novo hóspede", new_hospede_path %>

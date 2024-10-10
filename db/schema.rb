@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_09_033937) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_10_025237) do
   create_table "conta_usuarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "usuario_id"
     t.string "username"
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_09_033937) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "funcionario_id"
+    t.index ["funcionario_id"], name: "index_conta_usuarios_on_funcionario_id"
   end
 
   create_table "funcionarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -56,7 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_09_033937) do
     t.date "data_saida"
     t.integer "hospede_id"
     t.integer "quarto_id"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_09_033937) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role", default: "funcionario"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

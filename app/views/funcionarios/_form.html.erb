@@ -12,36 +12,36 @@
   <% end %>
 
   <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+    <%= form.label :nome %>
+    <%= form.text_field :nome, required: true %>
   </div>
 
   <div>
-    <%= form.label :cpf, style: "display: block" %>
-    <%= form.text_field :cpf %>
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf, required: true %>
   </div>
 
   <div>
-    <%= form.label :data_nascimento, style: "display: block" %>
-    <%= form.date_field :data_nascimento %>
+    <%= form.label :data_nascimento %>
+    <%= form.date_field :data_nascimento, required: true %>
   </div>
 
   <div>
-    <%= form.label :telefone, style: "display: block" %>
-    <%= form.text_field :telefone %>
+    <%= form.label :telefone %>
+    <%= form.text_field :telefone, required: true %>
   </div>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.label :email %>
+    <%= form.text_field :email, required: true %>
   </div>
 
   <div>
-    <%= form.label :cargo, style: "display: block" %>
-    <%= form.text_field :cargo %>
+    <%= form.label :cargo %>
+    <%= form.select :cargo, Funcionario.cargos.keys.map { |k| [k.humanize, k] }, { prompt: "Selecione um cargo" }, required: true %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Criar Funcionário" %>
   </div>
 <% end %>

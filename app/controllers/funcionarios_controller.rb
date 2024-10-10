@@ -29,6 +29,7 @@ class FuncionariosController < ApplicationController
   # POST /funcionarios
   def create
     @funcionario = Funcionario.new(funcionario_params)
+    Rails.logger.debug "Cargo recebido: #{funcionario_params[:cargo]}"
 
     respond_to do |format|
       if @funcionario.save

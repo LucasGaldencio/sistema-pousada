@@ -1,4 +1,6 @@
 class Funcionario < ApplicationRecord
+  enum cargo: { gerente: 0, recepcionista: 1, auxiliar: 2 }
+
   validates :nome, presence: true, length: { minimum: 3 }
   validates :cpf, presence: true, uniqueness: true, length: { is: 11 }
   validates :cargo, presence: true

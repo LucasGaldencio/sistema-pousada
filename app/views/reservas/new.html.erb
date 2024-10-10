@@ -20,11 +20,6 @@
   </div>
 
   <div>
-    <%= form.label :status %>
-    <%= form.select :status, Reserva.statuses.keys.map { |k| [k.humanize, k] }, { prompt: "Selecione um status" }, required: true, class: 'form-control' %>
-  </div>
-
-  <div>
     <%= form.submit "Criar Reserva", class: 'btn btn-primary' %>
   </div>
 <% end %>

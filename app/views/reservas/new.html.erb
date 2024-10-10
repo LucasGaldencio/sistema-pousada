@@ -1,14 +1,30 @@
-<h1>New reserva</h1>
+<%= form_with(model: @reserva, local: true) do |form| %>
+  <div>
+    <%= form.label :data_entrada %>
+    <%= form.date_field :data_entrada, required: true, class: 'form-control' %>
+  </div>
 
-<%= render "form", reserva: @reserva %>
+  <div>
+    <%= form.label :data_saida %>
+    <%= form.date_field :data_saida, required: true, class: 'form-control' %>
+  </div>
 
-<br>
+  <div>
+    <%= form.label :hospede_id, "Hospede" %>
+    <%= form.collection_select :hospede_id, @hospedes, :id, :nome, { prompt: "Selecione um hóspede" }, required: true, class: 'form-control' %>
+  </div>
 
-<div>
-  <%= link_to "Voltar para lista de reservas", reservas_path %>
-</div>
+  <div>
+    <%= form.label :quarto_id, "Quarto" %>
+    <%= form.collection_select :quarto_id, @quartos, :id, :numero, { prompt: "Selecione um quarto" }, required: true, class: 'form-control' %>
+  </div>
 
-<!-- Botão para voltar para a Home -->
-<div class="actions">
-  <%= link_to "Voltar para Home", home_index_path, class: "btn btn-primary" %>
-</div>
+  <div>
+    <%= form.label :status %>
+    <%= form.select :status, Reserva.statuses.keys.map { |k| [k.humanize, k] }, { prompt: "Selecione um status" }, required: true, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.submit "Criar Reserva", class: 'btn btn-primary' %>
+  </div>
+<% end %>

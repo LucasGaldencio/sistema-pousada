@@ -1,29 +1,22 @@
 <h1>Painel de Controle</h1>
 
-<div class="panel">
-  <h2>Bem-vindo, <%= current_user.email %>!</h2>
+<p>Bem-vindo(a), <%= current_user.email %>!</p>
 
-  <!-- Painel de informações -->
-  <div class="panel-info">
-    <h3>Resumo do Sistema:</h3>
-    <ul>
-      <li>Total de Hóspedes: <%= Hospede.count %></li>
-      <li>Total de Reservas: <%= Reserva.count %></li>
-      <li>Total de Quartos: <%= Quarto.count %></li>
-      <li>Total de Funcionários: <%= Funcionario.count %></li>
-    </ul>
-  </div>
+<h2>Reservas</h2>
+<ul>
+  <% @reservas.each do |reserva| %>
+    <li>
+      Reserva ID: <%= reserva.id %> - Data de Entrada: <%= reserva.data_entrada %> - Data de Saída: <%= reserva.data_saida %>
+    </li>
+  <% end %>
+</ul>
 
-  <!-- Links rápidos -->
-  <div class="panel-links">
-    <h3>Ações Rápidas:</h3>
-    <ul>
-      <li><%= link_to 'Gerenciar Hóspedes', hospedes_path %></li>
-      <li><%= link_to 'Gerenciar Reservas', reservas_path %></li>
-      <li><%= link_to 'Gerenciar Quartos', quartos_path %></li>
-      <li><%= link_to 'Gerenciar Funcionários', funcionarios_path %></li>
-    </ul>
-  </div>
-</div>
+<h2>Gerenciamento</h2>
+<ul>
+  <li><%= link_to 'Ver Hóspedes', hospedes_path, class: 'btn btn-primary' %></li>
+  <li><%= link_to 'Ver Quartos', quartos_path, class: 'btn btn-primary' %></li>
+  <li><%= link_to 'Ver Reservas', reservas_path, class: 'btn btn-primary' %></li>
+  <li><%= link_to 'Ver Funcionários', funcionarios_path, class: 'btn btn-primary' %></li>
+</ul>
 
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<!-- Aqui você pode adicionar mais seções ou opções conforme necessário -->

@@ -1,14 +1,8 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!  # Garante que o usuário esteja logado
 
   def index
-    if current_user.admin?
-      @funcionarios = Funcionario.all
-      @reservas = Reserva.all
-      @quartos = Quarto.all
-    elsif current_user.funcionario?
-      @reservas = current_user.reservas
-      @quartos = Quarto.where(status: 'disponível')
-    end
+    @reservas = Reserva.all || []  # Inicializa como um array vazio se não houver reservas
+    @quartos_disponiveis = Quarto.where(status: 'disponível') || []  # Faz o mesmo para quartos disponíveis
   end
 end

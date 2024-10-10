@@ -1,14 +1,25 @@
-<h1>New quarto</h1>
+<%= form_with(model: @quarto, local: true) do |form| %>
+  <div>
+    <%= form.label :numero %>
+    <%= form.number_field :numero, required: true %>
+  </div>
 
-<%= render "form", quarto: @quarto %>
+  <div>
+    <%= form.label :tipo %>
+    <%= form.select :tipo, Quarto.tipos.keys.map { |k| [k.humanize, k] }, { prompt: "Selecione um tipo" }, required: true %>
+  </div>
 
-<br>
+  <div>
+    <%= form.label :preco %>
+    <%= form.number_field :preco, required: true %>
+  </div>
 
-<div>
-  <%= link_to "Voltar para lista de quartos", quartos_path %>
-</div>
+  <div>
+    <%= form.label :status %>
+    <%= form.select :status, Quarto.statuses.keys.map { |k| [k.humanize, k] }, { prompt: "Selecione um status" }, required: true %>
+  </div>
 
-<!-- Botão para voltar para a Home -->
-<div class="actions">
-  <%= link_to "Voltar para Home", home_index_path, class: "btn btn-primary" %>
-</div>
+  <div>
+    <%= form.submit "Criar Quarto" %>
+  </div>
+<% end %>

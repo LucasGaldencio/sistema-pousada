@@ -20,7 +20,10 @@ class ReservasController < ApplicationController
   # GET /reservas/new
   def new
     @reserva = Reserva.new
+    @hospedes = Hospede.all  # Carrega todos os hóspedes
+    @quartos = Quarto.all    # Carrega todos os quartos
   end
+
 
   # GET /reservas/1/edit
   def edit
